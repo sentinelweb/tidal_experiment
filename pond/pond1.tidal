@@ -21,4 +21,3 @@ d3 silence
 do
   d3 $ sound $ samples "drum*4" "0 1 2 3"
   -- d3 $ sound $ samples "drum*8" "0 1 2 3"
-  -- d2 $ sound "bd*4 sn*4" # gain "[[1 0.8]*2 [0.5 0.7]]/2"

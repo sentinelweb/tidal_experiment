@@ -1,0 +1,15 @@
+hush
+
+d1 silence
+
+do
+  let goan_1=0.8
+  let pipe_1="pipe_sounds:11"
+  -- d1 $ (speed "[2 4 <2 3 5 4> 3 <4 2 3 2>, 2 4 <3 5 6 5>]" # sound pipe_1)
+  d1 $ (speed "[2 4 <2 3 5 4> 3 <4 2 3 2>, 2 4 <3 5 6 5>]" # sound pipe_1) # gain gain_1
+
+d2 silence
+
+do
+  let gain_2=1
+  d2 $ n (irand 26) # sound "1_ds_dk_33" # gain gain_2
