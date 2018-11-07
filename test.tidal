@@ -1,0 +1,139 @@
+https://tidalcycles.org/patterns.html
+sample list: /Users/robert/Library/Application Support/SuperCollider/downloaded-quarks/Dirt-Samples
+some good questions: http://blog.tidalcycles.org/faq/
+blog: http://blog.tidalcycles.org/
+interviews: http://blog.tidalcycles.org/category/interviews/
+key
+-- comment
+-- '*' & '/' sample repeat ([...]*2) repeats group
+-- '< .. >' use one sample per cycle
+-- '[...]' group pattern
+-- '.. , ..' play at the same time
+-- 'sample:n' play nth sample in directory
+-- {x x x , y y y y } polymeter rhythm - different sequence lengths but same tempo/pulse
+
+TEXT EDITOR
+bulk change
+-- replace gain "(.*)" with gain "0.0"
+
+
+effects
+works!! vol # fb # time(sec)
+# delay 0.5 # delayfb "0.5" # delayt "0.03" # orbit 1
+
+d1 $ sound "bd bd sd sd hh hh bd hh"
+
+d2 $ sound "sd hh bd bd"
+
+d3 $ sound "arpy"
+
+hush
+
+d1 $ sound "bd sd hh cp mt arpy drum odx bd arpy bass2 feel future"
+
+d1 silence
+d2 silence
+d4 silence
+# cuts other channels
+solo $ d1 $ sound "bd sn"
+
+d1 $ sound "[bd sd sd hh] cp"
+
+# nice
+
+d1 $ sound "[bd bd bd bd] [sd sd]"
+
+d4 $ sound "{bass bass2 sn can, bassdm notes bass2 cp notes, hh arpy hh hh}"
+d1 $ sound "hh tabla hh hh tabla tabla hh hh"
+classical music
+d4 $ sound "toys:2*0.125"
+musical memory
+d4 $ sound "toys:7*0.125"
+classical music
+d4 $ sound "toys:2*0.125"
+toy jingle
+d4 $ sound "toys:6*0.125"
+
+d1 $ sound "[bd bd bd bd, sd cp sd cp, hh hh, odx, future, bass2 bass2]"
+
+d1 $ sound "bd <arpy:1 arpy:2 arpy:3>"
+
+d1 $ sound "bd*2 sd/4"
+
+d1 $ sound "bd"
+
+d1 $ sound "[[bd sn] cp]*2" -- slows down the entire pattern by 2
+
+d1 $ every 4 (rev) (sound "bd*2 [bd [sn sn*2 sn] sn]")
+
+d1 $ slow 4 $ sound "bd*2 [bd [sn sn*2 sn] sn]"
+
+d1 $ every 4 (fast 4) $ sound "bd*2 [bd [sn sn*2 sn] sn]"
+
+d1 $ sound "bd*4" # crush "4"
+
+d1 $ sound "bd*4 sn hh hh" # crush "4" # speed "0.4"
+
+d1 $ sound "bd*4 sn*4" # gain "[[1 0.8]*2 [0.5 0.7]]/2"
+
+d1 $ gain "1 0.8 0.5 0.7" # sound "bd"
+
+d1 $ (|=| speed "2") $ sound "arpy*4" |=| speed "1"
+
+d1 $ every 4 (|+| speed "1") $ sound "arpy*4" |=| speed "1"
+
+d1 $ every 3 (|-| up "3") $ every 2 (|+| up "5") $ sound "arpy:2*4" |=| up "0 2 4 5"
+
+d1 $ sound "arpy(3,8)" # n 2
+
+d1 $ sound "arpy(2,4)" # n 3
+d1 $ n (off 0.125 (+12) $ off 0.25 (+7) $ slow 2 $ "0(3,8) [5 7]") # sound "supergong"
+
+d1 $ n "[0..7] [3..1]" # sound "supergong"
+
+d1 $ sound "arpy(3,8)" # n ("0 2" * 2) # gain "0.6 1 0.8"
+
+d1 $ (speed "2 4 3 6 8 1 4 3" # sound "arpy")
+d1 $ (speed "{2 4, 3 6, 8 1 4 3}" # sound "arpy") #here
+d2 $ (speed "[0.4 0.1] [0.4 0.4 0.2 0.3] [0.1 0.1 0.2 0.2] [0.1 0.1 0.2 0.2]" # sound "arpy")
+
+d2 $ sound "arpy" # speed "[1, 1.5, 2, 3]"
+
+d1 $ up "0 1 2 3 4 5 6 7 8 9 10 11" # sound "sn"
+
+d2 $ sound "bd(5,8)"
+
+d1 $ sound "sn(7,16,14)"
+hush
+d1 $ sound "bd(5,16,2)"
+
+d1 $ e 3 8 $ sound "bd*2 [sn cp]"
+
+d1 $ sound "bd([5 3]/2,8)"
+d1 $ n "0 2 3" # s "arpy"
+
+# same
+d1 $ sound $ samples "drum*4" "0 1 2 3"
+d1 $ sound "drum:0 drum:1 drum:2 drum:3"
+
+d1 $ sound $ samples "drum*4" (run 4)
+
+d1 $ s "drum arpy cp hh" # n (run 10)
+
+d1 $ n (run 10) # s "drum arpy cp hh"
+
+d1 $ pan "0 1 0.25 0.75" # sound "bd sn drum arpy" # n (run 4)
+
+d1 $ up "0 0*2 0*4 1" # sound "[arpy:3, bass:1, bd]"
+
+d1 $ sound "bd*16" # pan sine
+
+d1 $ sound "bd*16" # pan (slow 8 $ saw)
+
+d1 $ sound "bd*8 sn*8" # speed (density 2 $ tri)
+
+d1 $ sound "{bd hh sn cp, arpy bass2 drum notes can}"
+
+
+
+cps 0.8

@@ -1,0 +1,2 @@
+d1 $ every 3 (|-| up "3") $ every 2 (|+| up "5") $ sound "arpy:2*4" |=| up "0 2 4 5"
+d2 $ sound "sd hh bd [bd hh]"

@@ -1,0 +1,56 @@
+
+http://blog.tidalcycles.org/category/interviews/
+hush
+bps (180/120)
+
+d1 $ slowspread ($) [rev, (|+| accelerate "-2 4 12"),
+ (|+| coarse "12 24 6"), chop 20, stut 4 0.05 0.25] $
+ foldEvery [2,4,6] (10.5 <~) $ slowcat [
+ sound (samples "supernoise*4"(irand 8)),
+ sound (samples "supergong*8"(irand 20)),
+ sound (samples "superchip*4"(irand 2)),
+ sound (samples "supersnare*4"(irand 40))]
+ |+| unit "c" |+| speed "4"
+ # gain "[[1.7 0.5]/2 [0.5 1.8]]*2 "
+ |=| pan "0.05 0.75"
+ #delay "0.5"
+ # delaytime "0.04"
+ # decay "0.1"
+ # sustain "0.15"
+ # room "2"
+
+d2 $ palindrome $ superimpose ((# speed "8") . (2 <~)) $ sound (samples "[bassfoo*2 casio*8]/2" (irand 10))
+ |+| unit "c" |+| speed "1"
+ #gain "[[1.5 0.4]*2 [0.5 1.9]]*2 "
+ |=| pan "-2 1 1 0.55"
+ # n (toScale [1, 5, 7] " 1 3 3 -4")
+
+----------------------------------------
+
+d1 $ stack [
+  sound "bd(3,8)",
+  (0.5 <~) $ sound "cp",
+  every 2 (density 2) $ (0.25 <~) $ sound "arpy*2" ]
+
+----------------------------------------
+
+d1 $ every 3 (rev) $ every 4 (chop 4) $ stack [
+sound "bd(3,8)",
+(0.5 <~) $ sound "cp",
+every 2 (density 2) $ (0.25 <~) $ sound "arpy*2" ]
+
+------------------------------------
+
+d1 $ every 3 (0.5 <~) $
+every 4 (chop 4) $
+every 5 (# speed "1.5 -1 0.5") $
+every 6 (# crush (scale 3 8 $ slow 2 tri)) $
+every 7 (rev) $
+stack [ sound "bd(3,8)", sound "cp*2" ]
+
+------------------------------------------
+
+d1 $ sound "{bd ~ ~ bd ~}%4"
+d2 $ sound "ch*8"
+
+------------------------------------------
