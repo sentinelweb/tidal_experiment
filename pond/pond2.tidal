@@ -4,36 +4,57 @@ cps (100/60/4) -- slow
 cps (80/60/4) -- slower
 hush
 
-d1 silence
 $ degradeBy 0.3
 $ striate 1
 # vowel "i"
 # room 0.7 # size 10000
-d1 $(speed "2 4 3 6 8 1 4 3" # sound "pipe_sounds:14") # crush "16" # gain "0.9"
-d1 $ (speed "2 4 3 6" # sound "pipe_sounds:1")# gain "1"
-d1 $ (speed "<2 5 7> <3 5 8>" # sound "pipe_sounds:4")
 
-d1 $ (speed "[<2 5> 4 3 <7 3> <5 3> <7 3> <7 2> <7 5>]" # sound "pipe_sounds:1") # crush "16" # gain "0.9"
-d1 $ (speed "<2 5 4 3> 4 3 6 <3 1 8 6> 1 <2 4 6 8> <3 4 5 9>" # sound "pipe_sounds:14")# gain "1"
-d1 $ (speed "<3 7 6 5> 6 5 5 <4 3 5 3> 4 <3 5 4 6> <2 3 7 7>" # sound "pipe_sounds:11") # gain "1"
-d1 $ (speed "1 0.2 0.2 0.3 0.5 0.45 0.7 0.8" # sound "pipe_sounds:14") # crush "64" # gain "1"
-d1 $ (speed "1 8/9 32/27 4/3 3/2 27/16 16/9 2/1" # sound "pipe_sounds:14") # crush "64" # gain "1"
-d1 $ (speed "1 0.9 0.8 0.9 0.7 0.5 0.4 0.1" # sound "pipe_sounds:14") # crush "64" # gain "1"
+d1 silence
 
-d1 $ s "pipe_sounds:14*8" # n (irand 16)
+do
+  let gain_1=1.5
+  let pipe_1="pipe_sounds:11"
+  -- let delay_1=delay 0.9 # delayfb "0.96" # delayt "0.012" -- # orbit 2 --fb 0.6-0.99
+  let delay_1=gain 1 -- mute delay
+  -- d1 $ (speed "2 4 3 6 8 1 4 3" # sound pipe_1) # crush "16" # gain gain_1 -- # delay_1
+  -- d1 $ (speed "2 4 3 6" # sound pipe_1) # gain gain_1 -- # delay_1
+  -- d1 $ (speed "<2 5 7> <3 5 8>" # sound pipe_1) # gain gain_1 -- # delay_1
+  d1 $ striate 1 $ (speed "[<2 5> 4 3 <7 3> <5 3> <7 3> <7 2> <7 5>]" # sound pipe_1) # crush "16" # gain gain_1 # delay_1
+  -- d1 $ (speed "<2 5 4 3> 4 3 6 <3 1 8 6> 1 <2 4 6 8> <3 4 5 9>" # sound pipe_1) # gain gain_1 -- # delay_1
+  -- d1 $ (speed "<3 7 6 5> 6 5 5 <4 3 5 3> 4 <3 5 4 6> <2 3 7 7>" # sound pipe_1) # gain gain_1 -- # delay_1
+  -- d1 $ (speed "1 2 0.8 0.7 0.8 2 <3 2 2 1> 1 2" # sound pipe_1)  # gain gain_1
+  -- d1  $ s pipe_1+"*8" # n (irand 16)
+  -- $ degrade
+
+-- d1 $ (speed "1 8/9 32/27 4/3 3/2 27/16 16/9 2/1" # sound pipe_1) # crush "64" # gain gain_1
+-- d1 $ (speed "1 0.9 0.8 0.9 0.7 0.5 0.4 0.1" # sound pipe_1) # crush "64" # gain gain_1
+
+
 
 # rhythm section
 d2 silence
-d2 $ sound "bd*4" # gain "0.9"
-d2 $ sound "bd bd bd [bd bd sn sn]" # gain "0.9"
-d2 $ sound "bd bd bd <[bd bd sn sn] [bd sn]>" # gain "0.9"
+
+do
+  let gain_2=1.0
+  -- d2 $ sound "bd*4" # gain gain_2
+  -- d2 $ sound "bd [bd <bd sn>] bd [<bd sn> sn]" # gain gain_2
+  -- d2 $ sound "bd bd bd <[bd bd sn sn] [bd sn]>" # gain gain_2
+  d2 $ sound "bd*4 sn*4" # gain "[[1 0.8]*2 [0.5 0.7]]/2" --best
 
 d3 silence
-d3 $ sound "hh [hh hh] [hh hh] [hh cy cy cy]" # gain "1"
-d3 $ sound "hh:4 hh:4 hh:4 hh:4" # gain "1"
+
+do
+  let gain_3=1.5
+  -- d3 $ sound "hh [hh hh] [hh hh] [hh cy cy cy]" # gain gain_3
+  d3 $ sound "<hh hh cy hh> <hh hh cy cy> cy <cy hh cy cy> hh <hh hh cy hh <cy hh hh cy> cy" # gain gain_3
 
 d4 silence
-d4 $ s "drum arpy cp hh" # n (run 10) # gain 0.9
+
+do
+  let gain_4=1
+  d4 $ sound "hh:2 hh:4 hh:2 hh:4" # gain gain_4
+  -- d4 $ sound "hh:2 ~ hh:4 ~ hh:2 ~ hh:4" # gain gain_4
+  -- d4 $ sound "hh:2 hh:2 hh:4 hh:4 hh:2 hh:4 hh:2 hh:4" # gain gain_4
 
 melody - possibly doesnt work (musically)
 d5 silence
