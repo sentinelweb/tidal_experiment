@@ -3,9 +3,9 @@ hush
 d1 silence
 
 do
-  d1 $ (speed "2 4 3 6 8 1 4 3" # sound "arpy")
-  -- d1 $ (speed "2 3 4 8 6 1 4 5" # sound "arpy")
-  -- d1 $ (speed "{2 4 3 6, 8 1 4 3}" # sound "arpy")
+  -- d1 $ (speed "2 4 3 6 8 1 4 3" # sound "arpy")
+  d1 $ (speed "2 3 4 8 6 1 4 5" # sound "arpy")
+  d1 $ (speed "[2 4 ,3 6 ,5 7, 6 8, 8 1, 4 3, 4 3, 6 5]*1" # sound "arpy:4")
   -- d1 $ (speed "{2 3 4 8, 6 1 4 5}" # sound "arpy")
   -- d1 $ spread ($) [fast 2, rev, slow 2, striate 3, (# speed "0.8")] $ sound "[bd*2 [~ bd]] [sn future]*2 cp jvbass*4"
 
