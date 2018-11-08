@@ -12,14 +12,14 @@ $ striate 1
 d1 silence
 
 do
-  let gain_1=1.5
-  let pipe_1="pipe_sounds:11"
+  let gain_1=1.8
+  let pipe_1="pipe_sounds:14"
   -- let delay_1=delay 0.9 # delayfb "0.96" # delayt "0.012" -- # orbit 2 --fb 0.6-0.99
   let delay_1=gain 1 -- mute delay
   -- d1 $ (speed "2 4 3 6 8 1 4 3" # sound pipe_1) # crush "16" # gain gain_1 -- # delay_1
   -- d1 $ (speed "2 4 3 6" # sound pipe_1) # gain gain_1 -- # delay_1
   -- d1 $ (speed "<2 5 7> <3 5 8>" # sound pipe_1) # gain gain_1 -- # delay_1
-  d1 $ striate 1 $ (speed "[<2 5> 4 3 <7 3> <5 3> <7 3> <7 2> <7 5>]" # sound pipe_1) # crush "16" # gain gain_1 # delay_1
+  d1 $ (speed "<2 5> 4 3 <7 3> <5 3> <7 3> <7 2> <7 5>" # sound pipe_1) # gain gain_1 -- # delay_1
   -- d1 $ (speed "<2 5 4 3> 4 3 6 <3 1 8 6> 1 <2 4 6 8> <3 4 5 9>" # sound pipe_1) # gain gain_1 -- # delay_1
   -- d1 $ (speed "<3 7 6 5> 6 5 5 <4 3 5 3> 4 <3 5 4 6> <2 3 7 7>" # sound pipe_1) # gain gain_1 -- # delay_1
   -- d1 $ (speed "1 2 0.8 0.7 0.8 2 <3 2 2 1> 1 2" # sound pipe_1)  # gain gain_1
