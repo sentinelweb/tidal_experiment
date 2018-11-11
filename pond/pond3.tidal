@@ -1,4 +1,4 @@
-
+cps (146/60/4)
 hush
 
 d1 silence
@@ -20,9 +20,9 @@ d3 silence
 
 do
   let gain_3=1.9
-  d3 $ n "6 7 8 6" # sound "1_ds_dk_24"# gain gain_3
+  -- d3 $ n "6 7 8 6" # sound "1_ds_dk_24"# gain gain_3
   -- d3 $ n "1 2 3 4 5 6 8 8" # sound "1_ds_dk_24"# gain gain_3 # delay 0.0 # delayfb "0.8" # delayt "0.01" # orbit 1
-  -- d3 $ n "7 3 2 1 6 7 8 6" # sound "1_ds_dk_24"# gain gain_3
+  d3 $ n "7 3 2 1 6 7 8 6" # sound "1_ds_dk_24"# gain gain_3
   -- d3 $ n "<7 5 3 8> 3 2 <1.1 2 4> 6 7 <8 12 9 11> 6" # sound "1_ds_dk_24"# gain gain_3
   -- d3 $ n "1 2 3 4 5 6 7 8 9 7 8 2 6 6 1 8" # sound "1_ds_dk_24"# gain gain_3
   -- d3 $ n "2 2 2 2" # sound "1_ds_dk_24"# gain gain_3

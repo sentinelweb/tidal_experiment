@@ -1,0 +1,33 @@
+-- attempting to re-create the beat patterns described here
+-- https://www.attackmagazine.com/technique/beat-dissected/
+-- TODO make a way to set the samples as variables
+
+hush
+
+-- https://www.attackmagazine.com/technique/beat-dissected/sub-zero-minimal-techno/
+cps(125/4/60)
+
+d1 $ stack [ -- stack plays sounds in parallel to multiplex them onto a single channel
+  sound "bd*4",
+  sound "[~ ~ hh ~] [~ ~ hh hh] [~ ~ hh ~] [~ ~ hh ~]",
+  sound "[~ ~ hh:10 ~] [~ ~ hh:10 ~] [~ ~ hh:10 ~] [~ ~ hh:10 ~]",
+  sound "~ [sn:1 ~ ~ sn:3] ~ [sn:1 ~ ~ sn:3]",
+  sound "[~ ~ ~ rs] [~ ~ ~ rs] [~ ~ ~ rs] ~" # gain 0.8,
+  sound "~ ~ ~ [~ ~speech:1]" # speed "4"
+]
+
+-- https://www.attackmagazine.com/technique/beat-dissected/up-front-future-garage/
+-- pattern runs over 2 bars so make 8 grid and / each group to slow it down
+--  try to get swingBy (1/4) $ to work
+d1 $ stack [
+  sound "[[bassfoo ~ ~ ~] [~ ~ ~ bassfoo] ~ ~ [~ bassfoo ~ ~ ~] [bassfoo ~ ~ ~] [~ ~ bassfoo ~] ~]/2",
+  sound "[~ rs ~ [~ ~ rs ~] ~ [~ ~ rs ~] [~ ~ ~ rs] ~]/2",
+  sound "[~ sn ~ ~ ~ [~ ~ ~ sn] [~ ~ sn ~] [sn ~ sn ~]]/2",
+  sound "[[~ ~ hh ~] [~ ~ ~ hh] [~ hh ~ ~] ~ [~ ~ hh ~] [~ ~ ~ hh] [~ hh ~ ~] ~]/2",
+  sound "[[~ ~ ~ hh:7] [~ ~ hh:7 ~] [~ ~ hh:7 ~] [~ ~ hh:7 ~] [~ ~ ~ hh:7] [~ [~ hh:7] hh:7 ~] [~ ~ hh:7 ~] [~ hh:7 ~ hh:7]]/2"
+    # sustain "1" # attack "0.5" # hold "1" # release "0.5", -- envelope adjust for hh:7
+  sound "[[[~ db:4 ~ ~] ~]*4]/2"
+]
+
+-- random choose pattern
+d1 $ s (randcat ["bd*8","hh*2","sn*4"])

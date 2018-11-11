@@ -1,0 +1,4 @@
+-- simple examples of how to use effects
+
+-- room: simple reverb
+d1 $ sound "sine*4" # room (sine*8)
