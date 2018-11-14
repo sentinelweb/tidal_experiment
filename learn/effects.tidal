@@ -1,4 +1,13 @@
 -- simple examples of how to use effects
-
+hush
 -- room: simple reverb
 d1 $ sound "sine*4" # room (sine*8)
+
+-- low pass
+d1 $ sound "bd*4" # cutoff 200
+
+-- band pass
+d1 $ sound "hh:7*4" # bandf 2000 # bandq 50
+
+-- high pass
+d1 $ sound "hh:7*4" # hcutoff 8000
