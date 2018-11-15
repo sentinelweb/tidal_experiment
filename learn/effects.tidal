@@ -11,3 +11,12 @@ d1 $ sound "hh:7*4" # bandf 2000 # bandq 50
 
 -- high pass
 d1 $ sound "hh:7*4" # hcutoff 8000
+
+-- waveshaping distortion
+d1 $ sound "drum:1*4" # shape 0.8
+
+-- echo (stut) has three parameters, which could be called depth, feedback and time
+d1 $ stut 4 0.2 0.3 $ sound "drum:1*4"
+
+-- delay
+d2 $ sound "drum:1*4" # delay 0.9 # delayfb "0.9" # delayt "0.80" 
