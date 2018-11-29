@@ -2,30 +2,14 @@
 
 hush
 
-
--- https://www.attackmagazine.com/technique/beat-dissected/mystik-dubstep/
--- mystik dubstep
-cps(130/4/60)
-
+-- https://www.attackmagazine.com/technique/beat-dissected/dark-berlin-techno/
 d1 silence
-
-d1 $ stack [
-  s "[[bd ~ ~ bd ~ ~ ~ ~]/2 [bd ~ ~ ~ ~ ~ ~ bd ~ ~ ~ ~ bd ~ ~ bd ~]]", -- step 1 (1st bar 8, 2nd bar 16 grid)
-  s "[[~ ~ cp ~]*2]/2", -- step 2
-  s "[[~ ~ sn ~]*2]/2", -- step 2
-  s "[[hh:8*4 [~ hh:8*3]]*2]/2" # speed "1 2 1 2" # gain 1.3, -- step 3
-  s "[[~ ~ ~ hh]*8]/2" # gain 0.5, -- step 3
-  s "[[~*13 hh:7 ~*2]*2]/2" # bandf 2000 # bandq 10 # gain 1.3, -- step 3
-  s "[[~*10 hh:10 ~*5]*2]/2", -- step 3
-  s "[[drum:3*4 ~*2 drum:3*2]]/2" # gain 1.0 --, -- step 4
-  -- s "[~ ~ drum:1 ~]/2" # shape 0.8 # gain 0.7 -- # delay 0.6 # delayfb "0.5" # delayt "0.8"  -- step 6 snare effected
-]
 
 d1 $ stack [
   s "[bd*16]/4" # cutoff 200 # room 1.5, -- step1
   s "[[~ ~ ~ bd]*8]/4" # cutoff 300 # room 1.2 # gain 0.7, -- step 1
   s "[[~ cp:1 ~ ~]]" # gain 0.7 # room 1.5, -- step 2
-  s "[[~ ~ ~ industrial:0]*4]/4" # crush 4 # cutoff 800 # gain 0.8 # room 1.5, -- step 3
+  -- s "[[~ ~ ~ industrial:0]*4]/4" # crush 4 # cutoff 800 # gain 0.8 # room 1.5, -- step 3
   s "[[~ hh ~ hh]*8]/4" # room 0.6 -- , -- step 5
 ] # gain 1.8
 
@@ -34,9 +18,8 @@ d2 silence
 
 d2 $ sound "sine*8"
   # speed "1.3 1 1.2 1"
-  # n 1
-  -- # up 3
-  # room (sine/2) # size 0.9
+  # n 2
+  # room (sine/4) # size 0.9
   # gain 2
-  # shape 0.8
-  # bandf (scale 2000 200 $ sine*4) # bandq 50
+  # shape 0.2
+  # bandf (scale 1700 200 $ sine*4) # bandq 50
