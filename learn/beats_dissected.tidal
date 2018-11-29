@@ -43,8 +43,7 @@ d1 $ stack [
 
 -- https://www.attackmagazine.com/technique/beat-dissected/mystik-dubstep/
 -- mystik dubstep
-cps(140/4/60)
-
+cps(130/4/60)
 
 d1 $ stack [
   s "[[bd ~ ~ bd ~ ~ ~ ~]/2 [bd ~ ~ ~ ~ ~ ~ bd ~ ~ ~ ~ bd ~ ~ bd ~]]", -- step 1 (1st bar 8, 2nd bar 16 grid)
@@ -54,7 +53,7 @@ d1 $ stack [
   s "[[~ ~ ~ hh]*8]/2" # gain 0.5, -- step 3
   s "[[~*13 hh:7 ~*2]*2]/2" # bandf 2000 # bandq 10 # gain 1.3, -- step 3
   s "[[~*10 hh:10 ~*5]*2]/2", -- step 3
-  s "[[drum:3*4 ~ ~ drum:3*2]]/2" # gain 1.0 --, -- step 4
+  s "[[drum:3*4 ~*2 drum:3*2]]/2" # gain 1.0 --, -- step 4
   -- s "[~ ~ drum:1 ~]/2" # shape 0.8 # gain 0.7 -- # delay 0.6 # delayfb "0.5" # delayt "0.8"  -- step 6 snare effected
 ]
 
@@ -62,4 +61,4 @@ d1 $ stack [
 d1 silence
 d1 $ s "hh:0*4"
 -- random choose pattern
-d1 $ s (randcat ["bd*8","hh*2","sn*4"])
+d1 $ s (randcat ["bd*8","hh*2","sn*4"]) -- could use this to build alternate lines that play together
