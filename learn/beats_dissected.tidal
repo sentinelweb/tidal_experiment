@@ -5,21 +5,23 @@
 hush
 
 -- https://www.attackmagazine.com/technique/beat-dissected/sub-zero-minimal-techno/
-cps(125/4/60)
+setcps(120/4/60)
 
-d1 $ stack [ -- stack plays sounds in parallel to multiplex them onto a single channel
+p "mintechno"  $ stack [ -- stack plays sounds in parallel to multiplex them onto a single channel
   sound "bd*4",
   sound "[~ ~ hh ~] [~ ~ hh hh] [~ ~ hh ~] [~ ~ hh ~]",
   sound "[~ ~ hh:10 ~] [~ ~ hh:10 ~] [~ ~ hh:10 ~] [~ ~ hh:10 ~]",
   sound "~ [sn:1 ~ ~ sn:3] ~ [sn:1 ~ ~ sn:3]",
   sound "[~ ~ ~ rs] [~ ~ ~ rs] [~ ~ ~ rs] ~" # gain 0.8,
   sound "~ ~ ~ [~ ~speech:1]" # speed "4"
-]
+] # gain 1.5
+
+p "mintechno" silence
 
 -- https://www.attackmagazine.com/technique/beat-dissected/up-front-future-garage/
 -- pattern runs over 2 bars so make 8 grid and / each group to slow it down
 -- try to get swingBy (1/4) $ to work
-d1 $ stack [
+p "garage" $ stack [
   sound "[[bassfoo ~ ~ ~] [~ ~ ~ bassfoo] ~ ~ [~ bassfoo ~ ~ ~] [bassfoo ~ ~ ~] [~ ~ bassfoo ~] ~]/2",
   sound "[~ rs ~ [~ ~ rs ~] ~ [~ ~ rs ~] [~ ~ ~ rs] ~]/2",
   sound "[~ sn ~ ~ ~ [~ ~ ~ sn] [~ ~ sn ~] [sn ~ sn ~]]/2",
@@ -29,33 +31,47 @@ d1 $ stack [
   sound "[[[~ db:4 ~ ~] ~]*4]/2"
 ]
 
+hush
+
 -- https://www.attackmagazine.com/technique/beat-dissected/dark-berlin-techno/
 -- dark berlin techno
 -- 4 bar pattern
 -- might have to split the non reveber lineonto another channela as the room seems to die if not configured for on channel on the beat
-d1 $ stack [
-  s "[bd*16]/4" # cutoff 200 # room 1.5, -- step1
-  s "[[~ ~ ~ bd]*8]/4" # cutoff 300 # room 1.2 # gain 0.7, -- step 1
-  s "[[~ cp:1 ~ ~]]" # gain 0.7 # room 1.5, -- step 2
-  s "[[~ ~ ~ industrial:0]*4]/4" # crush 4 # cutoff 800 # gain 0.8 # room 1.5, -- step 3
+p "dkberlin" $ stack [
+  s "[bd*16]/4" # cutoff 200 # room 1.5 # orbit 0, -- step1
+  s "[[~ ~ ~ bd]*8]/4" # cutoff 300 # room 1.2 # gain 0.7 # orbit 1, -- step 1
+  s "[[~ cp:1 ~ ~]]" # gain 0.7 # room 1.5 # orbit 2, -- step 2
+  s "[[~ ~ ~ industrial:0]*4]/4" # crush 4 # cutoff 800 # gain 0.8 # room 1.5 # orbit 3, -- step 3
+  s "[[~ hh ~ hh]*8]/4" # room 0.6 # orbit 4-- , -- step 5
+]
+
+-- this is wothout orbits -- seems the same
+p "dkberlin" $ stack [
+  s "[bd*16]/4" # cutoff 200 # room 1.5 , -- step1
+  s "[[~ ~ ~ bd]*8]/4" # cutoff 300 # room 1.2 # gain 0.7 , -- step 1
+  s "[[~ cp:1 ~ ~]]" # gain 0.7 # room 1.5 , -- step 2
+  s "[[~ ~ ~ industrial:0]*4]/4" # crush 4 # cutoff 800 # gain 0.8 # room 1.5 , -- step 3
   s "[[~ hh ~ hh]*8]/4" # room 0.6 -- , -- step 5
 ]
 
 -- https://www.attackmagazine.com/technique/beat-dissected/mystik-dubstep/
 -- mystik dubstep
-cps(130/4/60)
+setcps(130/4/60)
 
-d1 $ stack [
+p "dubstep" $ stack [
   s "[[bd ~ ~ bd ~ ~ ~ ~]/2 [bd ~ ~ ~ ~ ~ ~ bd ~ ~ ~ ~ bd ~ ~ bd ~]]", -- step 1 (1st bar 8, 2nd bar 16 grid)
   s "[[~ ~ cp ~]*2]/2", -- step 2
   s "[[~ ~ sn ~]*2]/2", -- step 2
   s "[[hh:8*4 [~ hh:8*3]]*2]/2" # speed "1 2 1 2" # gain 1.3, -- step 3
   s "[[~ ~ ~ hh]*8]/2" # gain 0.5, -- step 3
-  s "[[~*13 hh:7 ~*2]*2]/2" # bandf 2000 # bandq 10 # gain 1.3, -- step 3
+  s "[[~*13 hh:7 ~*2]*2]/2" # bandf "<3000 2000 4000 1000>" # bandq 10 # gain 1.3, -- step 3
   s "[[~*10 hh:10 ~*5]*2]/2", -- step 3
   s "[[drum:3*4 ~*2 drum:3*2]]/2" # gain 1.0 --, -- step 4
   -- s "[~ ~ drum:1 ~]/2" # shape 0.8 # gain 0.7 -- # delay 0.6 # delayfb "0.5" # delayt "0.8"  -- step 6 snare effected
 ]
+
+-- https://www.attackmagazine.com/technique/beat-dissected/ethereal-techno/
+-- do this ^
 
 
 d1 silence

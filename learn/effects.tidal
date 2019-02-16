@@ -1,3 +1,5 @@
+-- https://tidalcycles.org/index.php/Category:Control_Functions
+
 -- simple examples of how to use effects
 hush
 -- room: simple reverb size (0-1) adds more echo
@@ -24,3 +26,6 @@ d2 $ sound "drum:1*4" # delay 0.9 # delayfb "0.9" # delayt "0.80"
 
 -- crush
 d1 $ sound "sine*4" # crush 5
+
+-- waveloss
+d1 $ s "drum*8" # waveloss "20 66.6 80 10"

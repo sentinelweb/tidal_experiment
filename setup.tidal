@@ -1,0 +1,8 @@
+
+(tempoMVar, ctrlMVar, p, hush,list) <- stream5 superdirtTarget
+
+tidal <- startTidal superdirtTarget (defaultConfig {cCtrlAddr = "0.0.0.0", cCtrlPort = 6020})
+
+import Sound.Tidal.Context
+
+(cps, getNow) <- bpsUtils

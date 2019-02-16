@@ -1,0 +1,6 @@
+setcps(120/4/60)
+
+p "discobeat" $ sound "bd*4"
+  # gain 1.5
+
+p "discobeat" silence

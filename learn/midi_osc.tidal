@@ -4,7 +4,7 @@
 -- OSC
 -- http://blog.tidalcycles.org/tidalcycles-and-processing/
 -- https://github.com/yaxu/p5dirt
-d1 silence
+p "mando" silence
 
-d1 $ jux (# accelerate "-0.1") $ s "supermandolin*8" # midinote "[80!6 78]/8"
+p "mando" $ jux (# accelerate "-0.1") $ s "supermandolin*8" # midinote "[80!6 78]/8"
   # sustain "1 0.25 2 1"

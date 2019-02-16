@@ -1,23 +1,37 @@
+setcps(140/4/60)
+
 hush
 
-d1 silence
+p "arp" silence
+p "bass" silence
+p "drum1" silence
+p "drum2" silence
+p "drum3" silence
 
 do
-  -- d1 $ (speed "2 4 3 6 8 1 4 3" # sound "arpy")
-  d1 $ (speed "2 3 4 8 6 1 4 5" # sound "arpy")
-  d1 $ (speed "[2 4 ,3 6 ,5 7, 6 8, 8 1, 4 3, 4 3, 6 5]*1" # sound "arpy:4")
-  -- d1 $ (speed "{2 3 4 8, 6 1 4 5}" # sound "arpy")
-  -- d1 $ spread ($) [fast 2, rev, slow 2, striate 3, (# speed "0.8")] $ sound "[bd*2 [~ bd]] [sn future]*2 cp jvbass*4"
+  p "arp" $ (speed "2 4 3 6 8 1 4 3" # sound "arpy")
+  -- p "arp" $ (speed "2 3 4 8 6 1 4 5" # sound "arpy")
+  -- p "arp" $ (speed "[2 4 ,3 6 ,5 7, 6 8, 8 1, 4 3, 4 3, 6 5]*1" # sound "arpy:4")
+  -- p "arp" $ (speed "{2 3 4 8, 6 1 4 5}" # sound "arpy")
+
+do
+  p "bass" $ spread ($) [fast 2, rev, slow 2, striate 3, (# speed "0.8")]
+    $ sound "[bd*2 [~ bd]] [sn future]*2 cp jvbass*4"
+    # gain 0.75
 
 # drums
-d2 silence
+p "drum1" silence
 
 do
-  -- d2 $ sound "hh ~ ~ hh hh ~ ~ ~ hh" # gain 0.8
-  d2 $ sound "bd*4 sn*4" # gain "[[1 0.8]*2 [0.5 0.7]]/2"
+  p "drum1" $ sound "bd*4 sn*4" # gain "[[1 0.8]*2 [0.5 0.7]]/2"
 
-d3 silence
+p "drum2" silence
 
 do
-  d3 $ sound $ samples "drum*4" "0 1 2 3"
-  -- d3 $ sound $ samples "drum*8" "0 1 2 3"
+  p "drum2" $ sound $ samples "drum*4" "0 1 2 3"
+  -- p "drum2" $ sound $ samples "drum*8" "0 1 2 3"
+
+p "drum3" silence
+
+do
+  p "drum3" $ sound "hh ~ ~ hh hh ~ ~ ~ hh" # gain 1

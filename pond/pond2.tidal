@@ -1,64 +1,57 @@
-cps (180/60/4) -- fast
-cps (140/60/4) -- medium
-cps (100/60/4) -- slow
-cps (80/60/4) -- slower
 hush
 
+p "pipes" silence
+p "pipes2" silence
+p "pipes3" silence
+p "pipes5" silence
+
+do
+  let gain_1=1.8
+  let pipe_1="pipe_sounds:14"
+  -- let delay_1=delay 0.4 # delayfb "0.16" # delayt "0.112" # orbit 2 --fb 0.6-0.99
+  let delay_1=gain gain_1 -- mute delay
+  p "pipes" $ (speed "2 4 3 6" # sound pipe_1) # gain gain_1 # delay_1
+  -- p "pipes" $ (speed "2 4 3 6 8 1 4 3" # sound pipe_1) # crush "16" # gain gain_1 -- # delay_1
+  -- p "pipes" $ (speed "<2 5> 4 3 <7 3> <5 3> <7 3> <7 2> <7 5>" # sound pipe_1) # gain gain_1 -- # delay_1
+  -- p "pipes" $ (speed "<2 5 4 3> 4 3 6 <3 1 8 6> 1 <2 4 6 8> <3 4 5 9>" # sound pipe_1) # gain gain_1 -- # delay_1
+  -- p "pipes" $ (speed "<3 7 6 5> 6 5 5 <4 3 5 3> 4 <3 5 4 6> <2 3 7 7>" # sound pipe_1) # gain gain_1 -- # delay_1
+  -- p "pipes" $ (speed "1 2 0.8 0.7 0.8 2 <3 2 2 1> 1 2" # sound pipe_1)  # gain gain_1
+  -- p "pipes"  $ s pipe_1+"*8" # n (irand 16)
+  -- $ degrade
+
+-- p "pipes" $ (speed "1 8/9 32/27 4/3 3/2 27/16 16/9 2/1" # sound pipe_1) # crush "64" # gain gain_1
+-- p "pipes" $ (speed "1 0.9 0.8 0.9 0.7 0.5 0.4 0.1" # sound pipe_1) # crush "64" # gain gain_1
 $ degradeBy 0.3
 $ striate 1
 # vowel "i"
 # room 0.7 # size 10000
 
-d1 silence
+--=======================================================
+-- rhythm section
+p "pipes2" silence
 
 do
-  let gain_1=1.8
-  let pipe_1="pipe_sounds:14"
-  -- let delay_1=delay 0.9 # delayfb "0.96" # delayt "0.012" -- # orbit 2 --fb 0.6-0.99
-  let delay_1=gain 1 -- mute delay
-  -- d1 $ (speed "2 4 3 6 8 1 4 3" # sound pipe_1) # crush "16" # gain gain_1 -- # delay_1
-  -- d1 $ (speed "2 4 3 6" # sound pipe_1) # gain gain_1 -- # delay_1
-  -- d1 $ (speed "<2 5 7> <3 5 8>" # sound pipe_1) # gain gain_1 -- # delay_1
-  d1 $ (speed "<2 5> 4 3 <7 3> <5 3> <7 3> <7 2> <7 5>" # sound pipe_1) # gain gain_1 -- # delay_1
-  -- d1 $ (speed "<2 5 4 3> 4 3 6 <3 1 8 6> 1 <2 4 6 8> <3 4 5 9>" # sound pipe_1) # gain gain_1 -- # delay_1
-  -- d1 $ (speed "<3 7 6 5> 6 5 5 <4 3 5 3> 4 <3 5 4 6> <2 3 7 7>" # sound pipe_1) # gain gain_1 -- # delay_1
-  -- d1 $ (speed "1 2 0.8 0.7 0.8 2 <3 2 2 1> 1 2" # sound pipe_1)  # gain gain_1
-  -- d1  $ s pipe_1+"*8" # n (irand 16)
-  -- $ degrade
+  let gain_2=1.2
+  p "pipes2" $ sound "bd*4" # gain gain_2
+  -- p "pipes2" $ sound "bd [bd <bd sn>] bd [<bd sn> sn]" # gain gain_2
+  -- p "pipes2" $ sound "bd bd bd <[bd bd sn sn] [bd sn]>" # gain gain_2
+  -- p "pipes2" $ sound "bd*4 sn*4" # gain "[[1 0.8]*2 [0.5 0.7]]/2" --best
 
--- d1 $ (speed "1 8/9 32/27 4/3 3/2 27/16 16/9 2/1" # sound pipe_1) # crush "64" # gain gain_1
--- d1 $ (speed "1 0.9 0.8 0.9 0.7 0.5 0.4 0.1" # sound pipe_1) # crush "64" # gain gain_1
-
-
-
-# rhythm section
-d2 silence
-
-do
-  let gain_2=1.0
-  -- d2 $ sound "bd*4" # gain gain_2
-  -- d2 $ sound "bd [bd <bd sn>] bd [<bd sn> sn]" # gain gain_2
-  -- d2 $ sound "bd bd bd <[bd bd sn sn] [bd sn]>" # gain gain_2
-  d2 $ sound "bd*4 sn*4" # gain "[[1 0.8]*2 [0.5 0.7]]/2" --best
-
-d3 silence
+p "pipes3" silence
 
 do
   let gain_3=1.5
-  -- d3 $ sound "hh [hh hh] [hh hh] [hh cy cy cy]" # gain gain_3
-  d3 $ sound "<hh hh cy hh> <hh hh cy cy> cy <cy hh cy cy> hh <hh hh cy hh <cy hh hh cy> cy" # gain gain_3
+  p "pipes3" $ sound "hh [hh hh] [hh hh] [hh cy cy cy]" # gain gain_3
+  -- p "pipes3" $ sound "<hh hh cy hh> <hh hh cy cy> cy <cy hh cy cy> hh <hh hh cy hh> <cy hh hh cy> cy" # gain gain_3
 
-d4 silence
 
-do
-  let gain_4=1
-  d4 $ sound "hh:2 hh:4 hh:2 hh:4" # gain gain_4
-  -- d4 $ sound "hh:2 ~ hh:4 ~ hh:2 ~ hh:4" # gain gain_4
-  -- d4 $ sound "hh:2 hh:2 hh:4 hh:4 hh:2 hh:4 hh:2 hh:4" # gain gain_4
+-- melody - possibly doesnt work (musically)
+p "pipes5" silence
 
-melody - possibly doesnt work (musically)
-d5 silence
-d5 $ (speed "2 <1.5 1.7 1.9 2.2> 4 3 2 <2 5 5.4 5> 4 3" # sound "bass:3")# gain "0.8" # cutoff 16000 # delay 0.0 # delayfb "0.5" # delayt "0.05" # orbit 1
+p "pipes5" $ (speed "2 <1.5 1.7 1.9 2.2> 4 3 2 <2 5 5.4 5> 4 3" # sound "bass:3")
+  # gain 0.6
+  # cutoff 400
+  -- # delay 0.6 # delayfb "0.75" # delayt "0.2" # orbit 1
 
 # bpq(0.1) ??
 

@@ -1,0 +1,23 @@
+cps(125/4/60)
+
+hush
+
+-- https://www.attackmagazine.com/technique/beat-dissected/dark-berlin-techno/
+-- dark berlin techno
+-- 4 bar pattern
+-- might have to split the non reveber lineonto another channela as the room seems to die if not configured for on channel on the beat
+d1 $ stack [
+  s "[bd*16]/4" # cutoff 200 # room 1.5, -- step1
+  s "[[~ ~ ~ bd]*8]/4" # cutoff 300 # room 1.2 # gain 0.7, -- step 1
+  s "[[~ cp:1 ~ ~]]" # gain 0.7 # room 1.5, -- step 2
+  s "[[~ ~ ~ industrial:0]*4]/4" # crush 4 # cutoff 800 # gain 0.8 # room 1.5, -- step 3
+  s "[[~ hh ~ hh]*8]/4" # room 0.6 -- , -- step 5
+] # gain 0.8
+
+d2 silence
+
+d2 $ sound "sine/4"
+  # speed "0.02"
+  # crush 2
+  -- # bandf 20 # bandq 50
+  # gain 1.0
