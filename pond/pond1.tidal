@@ -9,9 +9,9 @@ p "drum2" silence
 p "drum3" silence
 
 do
-  p "arp" $ (speed "2 4 3 6 8 1 4 3" # sound "arpy")
+  -- p "arp" $ (speed "2 4 3 6 8 1 4 3" # sound "arpy")
   -- p "arp" $ (speed "2 3 4 8 6 1 4 5" # sound "arpy")
-  -- p "arp" $ (speed "[2 4 ,3 6 ,5 7, 6 8, 8 1, 4 3, 4 3, 6 5]*1" # sound "arpy:4")
+  p "arp" $ (speed "[2 4 ,3 6 ,5 7, 6 8, 8 1, 4 3, 4 3, 6 5]*1" # sound "arpy:4")
   -- p "arp" $ (speed "{2 3 4 8, 6 1 4 5}" # sound "arpy")
 
 do

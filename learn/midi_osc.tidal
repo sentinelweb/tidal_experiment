@@ -1,10 +1,21 @@
 -- Midi
 -- http://blog.tidalcycles.org/superdirt-midi/
+-- https://userbase.tidalcycles.org/index.php/Controller_Input
 
 -- OSC
 -- http://blog.tidalcycles.org/tidalcycles-and-processing/
 -- https://github.com/yaxu/p5dirt
-p "mando" silence
 
-p "mando" $ jux (# accelerate "-0.1") $ s "supermandolin*8" # midinote "[80!6 78]/8"
-  # sustain "1 0.25 2 1"
+-- this just prints the pattern - useful for learning
+-- n "0 2 4 7" # s "midi"
+hush
+-- send midi out of tidalcycles (not working)
+p "d1" $ n "100 80 90 [500 200]" # s "midi" # midichan 0 -- SOMETHING GOES TO SC BUT NOT SURE WHAT
+p "d1" $ midinote "62 70 85 [78 48]" # s "midi" # midichan 0
+p "d1" silence
+p "d1"  $ ccv "20" # ccn 30 # s "midi"
+
+-- midi into tidalcycles
+-- see https://userbase.tidalcycles.org/index.php/Controller_Input
+p "d1" $ sound "bd [bd [bd bd]] bd [bd bd]" # speed (((cF 1 "91") + 0.25) * 2) -- works !! (with code in basic.sc)
+p "d1" silence

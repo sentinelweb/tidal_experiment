@@ -1,5 +1,5 @@
 
-(tempoMVar, ctrlMVar, p, hush,list) <- stream5 superdirtTarget
+(tempoMVar, ctrlMVar, p, hush,list) <- stream5 superdirtTarget -- NOT WRKING?
 
 tidal <- startTidal superdirtTarget (defaultConfig {cCtrlAddr = "0.0.0.0", cCtrlPort = 6020})
 
